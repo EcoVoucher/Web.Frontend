@@ -24,6 +24,13 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    - name: Lint
+      run: npm run lint
+     
     - name: Run build
       run: npm run build
+
+    - name: Versioning (simulação)
+      run: echo "Versionamento realizado"
+
 
