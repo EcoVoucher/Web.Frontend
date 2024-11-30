@@ -1,15 +1,18 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import axios from 'axios';
 import { validaDocumento } from "@/components/hocs/validaDocumento";
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { env } from "@/config/env";
+import { handleSetCookie } from '@/components/hocs/cookieSession';
 
 export default function Login() {
     const apiUrl = `${env.apiBaseUrl}/user`;
     const [documento, setDocumento]  = useState<string>('');
     const [senha, setSenha] = useState<string>('');
     const [documentoValido, setDocumentoValido] = useState<boolean | null>(null);
+    const [SenhaValida, setSenhaValida] = useState<boolean | null>(null);
 
     useEffect(() => {
         setDocumentoValido(validaDocumento(documento));
@@ -18,8 +21,8 @@ export default function Login() {
     const isSubmitting = useRef(false);
 
     const handleSubmit = async(event: any) => {
-        if (isSubmitting.current) return;
-        isSubmitting.current = true;
+        
+        //isSubmitting.current = true;
         event.preventDefault();
         console.log(documentoValido);
         if (documentoValido) {
@@ -30,18 +33,41 @@ export default function Login() {
 
 
             
-            const response = await fetch(`${apiUrl}/login`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    identidade: documento,
-                    senha: senha,
-                }),
+            
+            const response = axios.post(`${apiUrl}/login`, {
+                identidade: documento,
+                senha: senha,
+            }).then((response) => {
+                console.log(response.data.access_token);
+                //criptografarJs(response.data.access_token);
+
+
+                handleSetCookie(response.data.access_token);
+                console.log(response.data);
+            }).catch((error) => {
+                console.log(error.message);
+                setSenhaValida(false);
             });
-            const data = await response.json();
-            console.log(data);
+            console.log(response);
+            
+            // const response = await fetch(`${apiUrl}/login`, {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify({
+            //         identidade: documento,
+            //         senha: senha,
+            //     }),
+            // });
+            // try {
+            //     const data = await response.json();
+            //     console.log('passou', data);
+            // } catch (error) {
+            //     console.log('tterrr', error);
+            // } finally {
+            //     isSubmitting.current = false;
+            // }
             
 
             
@@ -86,7 +112,7 @@ export default function Login() {
                     <div className="col-md-6">
                         <div className="card rounded-0">
                             <div className="card-body">
-                                <form id="login-form" onSubmit={handleSubmit}>
+                                <form method='POST' id="login-form" onSubmit={handleSubmit}>
                                     <div className="form-group">
                                         <label htmlFor="cpfOuCnpj">Cpf / Cnpj:</label>
                                         <input type="text" id="cpfOuCnpj" className={`form-control ` + (!documentoValido ? 'is-invalid' : 'is-valid')} name="cpfOuCnpj" required onChange={(e) => setDocumento(e.target.value)}/>
@@ -98,7 +124,7 @@ export default function Login() {
                                     <div className="form-group">
                                         <label htmlFor="senha">Senha:</label>
                                         <div className="input-group">
-                                            <input type="password" id="senha" className="form-control" name="senha" onChange={(e) => setSenha(e.target.value)} required />
+                                            <input type="password" id="senha" className={`form-control ${!SenhaValida ? 'is-invalid' : 'is-valid'}`} name="senha" onChange={(e) => setSenha(e.target.value)} required />
                                         </div>
                                         <div id="validationServer03Feedback" className="invalid-feedback">
                                             Senha inválida
