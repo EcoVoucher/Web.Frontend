@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import './style.css';
+import Layout from '../layout';
 
 const PegadaPage = () => {
     const [resultado, setResultado] = useState(0);
@@ -47,14 +48,14 @@ const PegadaPage = () => {
     };
 
     return (
-        <div className="container">
+            <div>
             <div className="container">
-                <h1>Pegada Ecológica: O que é isso?</h1>
+                <h3>Pegada Ecológica: O que é isso?</h3>
                 <hr />
 
                 <section className="pegada">
                     <div className="imagem">
-                        <img src="images/footprint.png" alt="Pegada Ecológica" width="100%" />
+                        <img src="imagem/images/footprint.png" alt="Pegada Ecológica" width="100%" />
                     </div>
                     <div className="texto">
                         <h2>Você já parou para pensar que a forma como vivemos deixa marcas no meio ambiente?</h2>
@@ -235,12 +236,14 @@ const PegadaPage = () => {
                     </div>
                 </section>
             </div>
+            <div className = "bot">
             <div className="botao">
                 <button onClick={calcularSoma}>Verificar minha pegada</button>
             </div>
 
             <div className="soma">
                 <p id="resultado">{resultado}</p>
+            </div>
             </div>
         </div>
     );

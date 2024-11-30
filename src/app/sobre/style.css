@@ -1,0 +1,60 @@
+
+/* Ajustando o título */
+.titulo h3 {
+    text-align: center;
+    margin: 20px auto;
+    padding: 0 20px;
+    font-size: xx-large;
+}
+
+/* Ajustando o texto para centralizar no fundo */
+.texto {
+    max-width: 1000px;
+    margin: 0 auto 20px;
+    padding: 0 20px;
+    background: transparent; /* Transparente para evitar contorno */
+}
+
+.texto h2 {
+    text-align: justify;
+    font-size: x-large;
+}
+
+/* Flexbox para o vídeo */
+.conteudo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    background: transparent; /* Sem fundo para a seção de vídeo */
+}
+
+.conteudo-video {
+    width: 80%;
+    max-width: 860px;
+    justify-content: center;
+    background: transparent; /* Transparente para garantir um fundo limpo */
+}
+
+.conteudo-video iframe {
+    width: 100%;
+    height: 480px; /* Altura padrão para o vídeo */
+    border: none; /* Remove qualquer contorno ao redor do iframe */
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 768px) {
+    .texto {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .conteudo-video {
+        max-width: 100%;
+    }
+
+    .conteudo-video iframe {
+        height: 240px; /* Ajuste a altura para dispositivos móveis */
+    }
+}

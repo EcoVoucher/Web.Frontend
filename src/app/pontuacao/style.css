@@ -1,0 +1,99 @@
+
+
+.centralizar {
+    display: flex; /* Torna o container flexível */
+    align-items: center; /* Alinha os itens ao topo */
+    justify-content: space-between; /* Espaça os itens igualmente */
+    width: 100%; /* Faz o container ocupar toda a largura */
+    padding: 20px; /* Adiciona espaço interno */
+    gap: 10px; /* Espaçamento entre os elementos */
+}
+
+.tabela {
+    flex: 1; /* Permite que a tabela ocupe um espaço proporcional */
+    max-width: 50%; /* Limita a largura máxima da tabela */
+    text-align: center;
+    margin-left: 30px;
+}
+
+.esquerda {
+
+    flex: 1; /* Ocupar um espaço proporcional */
+    max-width: 50%; /* Limita a largura máxima */
+    display: flex;
+    flex-direction: column; /* Organiza os elementos em uma coluna */
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    height: 100%; /* Ocupa a altura total */
+    text-align: center; /* Centraliza o texto */
+}
+
+
+h3,h2 {
+    color: #676767;
+    font-size: 40px;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+table,
+th,
+td {
+    border: 1px solid #ae7e7e;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #1ac157;
+    color: white;
+}
+
+.form-group {
+    margin: 20px;
+    text-align: center;
+}
+
+select,
+input[type="number"] {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 200px;
+}
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+
+button {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #218838;
+}

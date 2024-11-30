@@ -1,4 +1,6 @@
+function calcularSoma() {
+	
+	console.log('Function calcularSoma called');
+}
 
-
-// Call the function to avoid the 'defined but never used' error
 calcularSoma();
