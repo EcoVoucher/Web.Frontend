@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './style.css';
 import { AuthProvider, handleGetCookie, isAuth, useAuth } from '@/components/hocs/cookie';
+import { env } from "@/config/env";
 import Layout from '../layout';
 
 const PegadaPage = () => {
@@ -36,7 +37,7 @@ const PegadaPage = () => {
         const decodedToken = JSON.parse(atob(token.split('.')[1]));
         const userId = decodedToken.user.id;
 
-        axios.patch('http://localhost:4000/api/user/alterar_pegada', {
+        axios.patch(`${env.apiBaseUrl}/user/alterar_pegada`, {
             token: userId,
             soma_pegada: soma
         }, {

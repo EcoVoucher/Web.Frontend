@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { env } from "@/config/env";
 import { Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { handleDeleteCookie, handleSetCookie } from '@/components/hocs/cookie';
@@ -66,7 +67,7 @@ export default function ContatoComponent() {
 
   const onSubmit = (values: ContatoFormInputs) => {
     alert('Mensagem enviada com sucesso!');
-    axios.post('http://localhost:4000/api/contato', values).then(response => {
+    axios.post(`${env.apiBaseUrl}/contato`, values).then(response => {
         handleSetCookie(response.data.id_contato, `contato_${response.data.id_contato}`, values, 1/24);
         values.id = response.data.id_contato;
         setContatos([...contatos, values]);
@@ -83,7 +84,7 @@ export default function ContatoComponent() {
 
   const onEditSubmit = (values: ContatoFormInputs) => {
     if (!selectedContato) return;
-    axios.patch(`http://localhost:4000/api/contato/${selectedContato.id}`, values).then(response => {
+    axios.patch(`${env.apiBaseUrl}/contato/${selectedContato.id}`, values).then(response => {
       alert('Contato atualizado com sucesso');
     }).catch(error => {
       console.error('Erro ao atualizar contato:', error);

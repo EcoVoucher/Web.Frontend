@@ -3,6 +3,7 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './style.css';
+import { AuthProvider, isAuth } from '@/components/hocs/cookie';
 
 interface Material {
   nome: string;
@@ -10,6 +11,9 @@ interface Material {
 }
 
 const Pontuacao: React.FC = () => {
+  if(!isAuth()) {
+    return <AuthProvider><></></AuthProvider>;
+  }
   const materiais: Material[] = [
     { nome: 'Plástico', pontos: 10 },
     { nome: 'Papel', pontos: 8 },
