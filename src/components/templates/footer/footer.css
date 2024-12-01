@@ -1,12 +1,12 @@
 footer {
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
-    padding: 0;
+    padding:1% 0%;
     padding-bottom: 1%;
     background-color: hsl(0, 0%, 99%);
     display: flex;
-    margin: 0;
+    margin: 0%;
     justify-content: center;
   }
   
@@ -30,16 +30,7 @@ footer {
   }
   
   @media screen and (max-width:600px){
-  .link{
-  margin-left: 5%;
-  margin-right: 5%;
-  font-size:small;
-  }
-  .redesocial{
-  display: none;}
-  h1{
-    font-size: medium;
-  }
+  
   footer{
     padding: 3%;
   }
@@ -53,16 +44,7 @@ footer {
   }
 
 @media screen and (min-width: 40in) {
-    .link {
-        font-size: 24px;
-        margin-left: 40%;
-        margin-right: 40%;
-    }
     
-    h1{
-    font-size: 40px;
-    
-      }
     footer{
       padding: 3%;
     }
@@ -73,20 +55,12 @@ footer {
       width: 180px;
       height: 180px;
     }
-      }
-    @media (max-width: 1200px){
+  }
+  @media (max-width: 1200px){
       .conteudo {
           flex-direction: column;
           align-items: center;
           width: 100%;
-      }
-      .social-icons{
-          width: 100%;
-          flex-direction: column;
-          align-items: center;
-          size: 5px;
-          gap: 3rem;
-    
       }
     
     }

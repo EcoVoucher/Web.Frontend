@@ -5,6 +5,7 @@ import './cadastro.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
+
 const Cadastro = () => {
     const [pessoaFisica, setPessoaFisica] = useState<boolean>(true);
     const [formData, setFormData] = useState({

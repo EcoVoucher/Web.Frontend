@@ -1,0 +1,68 @@
+
+
+/* Estilos para a página de apresentação */
+.page-content {
+    padding: 20px;
+}
+
+.titulo h6 {
+    text-align: left;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    font-size: 2.5em; /* Tamanho da fonte do título principal */
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #616161;
+    margin: 20px 0;
+}
+.conteudo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start; /* Alinha a imagem e o texto ao topo */
+    flex-grow: 1; /* Permite que a div cresça */
+}
+
+.imagem {
+    flex: 1;
+    max-width: 25%;
+    min-width: 300px; /* Largura mínima para a imagem */
+    text-align: center; /* Centraliza a imagem no seu contêiner */
+    margin-top: 5%;
+}
+
+.imagem img {
+    width: 100%;
+    border-radius: 5%;
+}
+
+.texto {
+    flex: 2;
+    max-width: 60%;
+    line-height: 1.6;
+    text-align: justify;
+    font-size: 1.2em;
+}
+
+.texto p {
+    margin-bottom: 15px;
+}
+
+.texto h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+
+@media (max-width: 600px) {
+    .texto {
+        font-size: 1em;
+    }
+    .texto h3 {
+        font-size: 1.5em;
+    }
+}

@@ -1,0 +1,21 @@
+/* Estilo do link do ícone de mídia social */
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px; /* Espaço entre os ícones */
+  text-decoration: none; /* Remove sublinhado */
+  cursor: pointer;
+}
+
+/* Estilo da imagem do ícone */
+.socialImage {
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Adiciona animação */
+  opacity: 0.8; /* Define opacidade inicial */
+}
+
+/* Efeito de hover */
+.socialImage:hover {
+  transform: scale(1.2); /* Amplia levemente ao passar o mouse */
+  opacity: 1; /* Torna a imagem mais visível */
+}

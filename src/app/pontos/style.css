@@ -1,0 +1,63 @@
+/* Estilo do título principal */
+h3 {
+    text-align: center; /* Centraliza o texto */
+    font-size: xx-large;
+    margin: 0; /* Reduz a margem acima e abaixo do título */
+    padding: 0 10px; /* Padding lateral reduzido */
+}
+
+/* Conteúdo flexível */
+.conteudo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 90px; /* Reduzido para diminuir o espaçamento entre os elementos */
+    align-items: center;
+    justify-content: center;
+    margin-top: 0; /* Remove a margem superior */
+    padding-top: 10px; /* Adiciona um pequeno padding para evitar toque no título */
+}
+
+/* Estilo da imagem */
+.imagem {
+    flex: 1 1 40%; /* A imagem ocupará 50% do espaço disponível */
+    max-width: 400px; /* Limita a largura máxima da imagem */
+}
+
+.imagem img {
+    border-radius: 10px; /* Borda arredondada para a imagem */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 100%; /* Garante que a imagem ocupe toda a largura do container */
+}
+
+/* Estilo do texto */
+.texto {
+    flex: 1 1 50%; /* O texto ocupará 50% do espaço disponível */
+    max-width: 600px; /* Limita a largura máxima do texto */
+    padding: 10px 15px; /* Reduzido para minimizar o espaço interno */
+    margin-top: 0; /* Remove a margem superior */
+}
+
+.texto h2 {
+    font-size: 1.5em; /* Tamanho da fonte ajustado */
+    line-height: 1.5; /* Melhor espaçamento entre linhas */
+    text-align: justify; /* Justifica o texto para uma aparência limpa */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .conteudo {
+        flex-direction: column; /* Empilha os elementos verticalmente em telas menores */
+        gap: 15px; /* Menor espaçamento para telas menores */
+    }
+
+    .imagem, .texto {
+        flex: 1 1 100%; /* Cada um ocupará 100% do espaço em telas menores */
+        max-width: 100%; /* O conteúdo ocupa toda a largura disponível */
+    }
+
+    h3 {
+        font-size: 1.8em; /* Ajusta o tamanho do título para telas menores */
+        margin: 15px 0; /* Margem reduzida para evitar muito espaço */
+    }
+}
