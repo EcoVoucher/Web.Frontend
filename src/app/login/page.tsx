@@ -53,7 +53,7 @@ export default function Login() {
                     <div className="col-md-6 text-center">
                             <a href="/home">
                                 <img src="/imagem/IMAGEMhome/log-ecovoucher.jpeg" alt="Logotipo" className="logo"  />
-                            </a>
+                           </a>
                     </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@ export default function Login() {
                                             <a href="/cadastro">Faça seu cadastro!</a>
                                         </div>
                                     </div>
-                                    <button type="submit" className="btn btn-primary">Entrar</button>
+                                    <button type="submit" className="btn btn-success">Entrar</button>
                                 </form>
                             </div>
                         </div>

@@ -1,41 +1,35 @@
-@charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
-body {
-  background: linear-gradient(to bottom, rgb(159, 221, 162), #5bb162);
-  margin: 0;
-  display: flex;
-  flex-direction:column;
-  align-items: center;
-  text-align: center;
-  height: 100vh;
-  justify-content:center;
-  margin-left: 0%;
-  margin-right: 0%;
-}
 
 .logo {
-  max-width:35%;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  max-width: 35%;
+  height: auto;
   border-radius: 30%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 
+.container2 {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {
-  background-color: #51a960;
+  background-color: #83cc7a;
   border-radius: 10px;
-  padding: 2rem;
-  width: 800px;
+  padding: 40px;
+  max-width: 600px;
+  margin: auto;
   text-align: center;
 }
-.forgot-password {
-  text-align:center;
-  margin-top: 10px;
-  margin-bottom: 10px;
+
+.form-group {
+  margin-bottom: 20px;
 }
 
+.forgot-password,
 .signup {
-  text-align:center;
+  text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
 }
