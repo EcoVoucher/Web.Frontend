@@ -6,6 +6,7 @@ import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { env } from "@/config/env";
 import { handleSetCookie } from '@/components/hocs/cookieSession';
+import validaSenha from '@/components/hocs/validaSenha';
 
 export default function Login() {
     const apiUrl = `${env.apiBaseUrl}/user`;
@@ -15,87 +16,36 @@ export default function Login() {
     const [SenhaValida, setSenhaValida] = useState<boolean | null>(null);
 
     useEffect(() => {
-        setDocumentoValido(validaDocumento(documento));
-    }, [documento])
-
-    const isSubmitting = useRef(false);
+    }, [documento, senha])
 
     const handleSubmit = async(event: any) => {
-        
-        //isSubmitting.current = true;
         event.preventDefault();
+        
+        setDocumentoValido(validaDocumento(documento));
+        setSenhaValida(validaSenha(senha));
+
+
         console.log(documentoValido);
-        if (documentoValido) {
-            //const form = event.currentTarget;
-            //if (form.checkValidity() === false) {
-            //    event.stopPropagation();
-            //}
-
-
-            
-            
+        if (documentoValido && SenhaValida) {            
             const response = axios.post(`${apiUrl}/login`, {
                 identidade: documento,
                 senha: senha,
             }).then((response) => {
-                console.log(response.data.access_token);
-                //criptografarJs(response.data.access_token);
-
-
+                setSenhaValida(true);
+                setDocumentoValido(true);
                 handleSetCookie(response.data.access_token);
-                console.log(response.data);
+                window.location.href = '/pegada';
             }).catch((error) => {
                 console.log(error.message);
                 setSenhaValida(false);
+                setDocumentoValido(false);
             });
             console.log(response);
-            
-            // const response = await fetch(`${apiUrl}/login`, {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify({
-            //         identidade: documento,
-            //         senha: senha,
-            //     }),
-            // });
-            // try {
-            //     const data = await response.json();
-            //     console.log('passou', data);
-            // } catch (error) {
-            //     console.log('tterrr', error);
-            // } finally {
-            //     isSubmitting.current = false;
-            // }
-            
-
-            
-            // const response = await axios.get(`${env.apiBaseUrl}/orders`);
-
-            // const orders = response.data.pedidos.map((order: any) => {
-            //     const date = new Date(order.data);
-            //     const formattedDate = `${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}/${date.getFullYear()}`;
-            //     return {
-            //     id: order.id,
-            //     date: formattedDate,
-            //     cpf: order.cpf,
-            //     paymentMethod: order.forma_pagamento,
-            //     itemCount: order.quantidade_itens,
-            //     totalValue: order.valor_total,
-            //     };
-            // });
-            console.log('Form submitted');
         } else {
             console.log('Invalid document');
         }
     };
 
-    //const form = document.getElementById('login-form');
-    //if (form) {
-    //    form.addEventListener('submit', handleSubmit);
-    //}
-    
     return (
         <div>
             <div className="container2">
@@ -115,21 +65,16 @@ export default function Login() {
                                 <form method='POST' id="login-form" onSubmit={handleSubmit}>
                                     <div className="form-group">
                                         <label htmlFor="cpfOuCnpj">Cpf / Cnpj:</label>
-                                        <input type="text" id="cpfOuCnpj" className={`form-control ` + (!documentoValido ? 'is-invalid' : 'is-valid')} name="cpfOuCnpj" required onChange={(e) => setDocumento(e.target.value)}/>
-                                        <div className="invalid-feedback" id="cpfCnpjMessage"></div>
-                                        <div id="validationServer03" className="invalid-feedback">
-                                            Cpf ou Cnpj inválido
+                                        <input type="text" id="cpfOuCnpj" className={`form-control ` + (documentoValido === false ? 'is-invalid' : documentoValido !== null ? 'is-valid' : '')} name="cpfOuCnpj" required onChange={(e) => setDocumento(e.target.value)}/>
+                                        <div id="cfpCnpjFeedback" className="invalid-feedback">
+                                            Digite um Cpf ou Cnpj válido
                                         </div>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="senha">Senha:</label>
                                         <div className="input-group">
-                                            <input type="password" id="senha" className={`form-control ${!SenhaValida ? 'is-invalid' : 'is-valid'}`} name="senha" onChange={(e) => setSenha(e.target.value)} required />
+                                            <input type="password" id="senha" className={`form-control ${SenhaValida === false ? 'is-invalid' : SenhaValida !== null ? 'is-valid' : ''}`} name="senha" onChange={(e) => setSenha(e.target.value)} required />
                                         </div>
-                                        <div id="validationServer03Feedback" className="invalid-feedback">
-                                            Senha inválida
-                                        </div>
-                                        <div id="passwordMessage" className="invalid-feedback"></div>
                                         <div className="forgot-password">
                                             <a href='#'>Esqueceu a senha?</a>
                                         </div>

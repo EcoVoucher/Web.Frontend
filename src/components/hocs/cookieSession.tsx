@@ -1,19 +1,109 @@
 import Cookies from 'js-cookie';
 import CryptoJS from "crypto-js";
 import { env } from "@/config/env";
+import { createContext, useContext, useEffect, useState } from 'react';
+import axios from 'axios';
+
+
+
+const authContext = createContext<{
+    token: string | null;
+}>({
+    token: null,
+});
+
+
+interface AuthProviderProps {
+    children: React.ReactNode;
+}
+
+export function isAuth(): boolean {
+    const token = handleGetCookie();
+    let retorno = true;
+    if (!token) {
+        retorno = false;
+    } else {
+        try {
+            const response = axios.post(`${env.apiBaseUrl}/auth`, {}, {
+            headers: {
+                'access-token': token
+            }
+            });
+            console.log('Token validation response', response);
+            return true;
+        } catch (error) {
+            console.log('Token validation error', error);
+            console.error('Error during token validation', error);
+            return false;
+        }
+    }
+    
+    return retorno;
+}
+
+
+export const AuthProvider = ({ children }: AuthProviderProps) => {
+    const [token, setToken] = useState<string | null>(handleGetCookie());
+
+    useEffect(() => {
+        
+        
+        
+        
+        if (!token) {
+            window.location.href = '/login';
+        } else {
+            axios.post(`${env.apiBaseUrl}/auth`, {}, {
+                headers: {
+                    'access-token': token
+                }
+            }).then(response => {
+                console.log('Token validation response', response);
+            }).catch(error => {
+                handleDeleteCookie();
+                console.error('Error during token validation', error);
+                window.location.href = '/login';
+            });
+        }
+    
+        // setToken(token);
+    }, []);
+    useEffect(() => {
+    }, [token]);
+    //let token = handleGetCookie();
+    return (
+        <authContext.Provider value={{ token }}>
+            {children}
+        </authContext.Provider>
+    );
+}
+
+export const useAuth = () => useContext(authContext);
+
 
 export const handleSetCookie = (token: string) => {
     token = criptografar(token);
     Cookies.set('userToken', token, {
-        secure: process.env.NODE_ENV === 'production', // HTTPS apenas em produção
+        secure: true, // HTTPS apenas em produção
         sameSite: 'Strict',  // Proteção contra CSRF
-        expires: 1,          // Expira em 1 dia
+        expires: 1,          // Expira em 1 'dia
     });
 };
 
 export const handleGetCookie = () => {
-    const userToken = Cookies.get('userToken');
-    alert(`Token do cookie: ${userToken}`);
+    const userToken: string | null = Cookies.get('userToken') ?? null;
+    if (userToken === null) {
+        return userToken;
+    }
+    
+    const userGet: string = descriptografar(userToken);
+
+    return userGet;
+};
+
+
+export const handleDeleteCookie = () => {
+    Cookies.remove('userToken', { path: '/' });
 };
 
 
@@ -28,19 +118,19 @@ export function salvarJsonEmCookie(nome: string, objeto: object, dias: number) {
 export function obterJsonDeCookie(nome: string) {
     const cookies = document.cookie.split(';');
     for (let i = 0; i < cookies.length; i++) {
-      const cookie = cookies[i].trim();
-      if (cookie.startsWith(nome + '=')) {
-        const valor = cookie.substring(nome.length + 1);
-        return JSON.parse(valor);
-      }
+        const cookie = cookies[i].trim();
+        if (cookie.startsWith(nome + '=')) {
+            const valor = cookie.substring(nome.length + 1);
+            return JSON.parse(valor);
+        }
     }
     return null; // Retorna null se o cookie não existir
 }
 
-function criptografar(string: string) {
+function criptografar(string: string): string {
     return CryptoJS.AES.encrypt(string, env.secretKey).toString();
 }
 
-function descriptografar(string: string) {
-    return CryptoJS.AES.decrypt(string, env.secretKey).toString(CryptoJS.enc.Utf8);   
+function descriptografar(string: string): string {
+    return CryptoJS.AES.decrypt(string, env.secretKey).toString(CryptoJS.enc.Utf8);
 }

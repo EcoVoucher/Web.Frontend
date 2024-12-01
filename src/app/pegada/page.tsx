@@ -1,8 +1,12 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css';
+import { AuthProvider, isAuth, useAuth } from '@/components/hocs/cookieSession';
 
 const PegadaPage = () => {
+    if(!isAuth()) {
+        return <AuthProvider><></></AuthProvider>;
+    }
     const [resultado, setResultado] = useState(0);
 
     const calcularSoma = () => {
@@ -243,6 +247,7 @@ const PegadaPage = () => {
                 <p id="resultado">{resultado}</p>
             </div>
         </div>
+
     );
 };
 
