@@ -3,14 +3,13 @@ import './style.css';
 import { useEffect, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-// import { ContatoService } from '../services/ContatoService';
-// import { setCookie, getCookie, deleteCookie } from '../utils/cookie-utils';
-// import { Contato } from '../models/Contato';
-// import styles from '../styles/Contato.module.css';
+import axios from 'axios';
 import { Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { handleDeleteCookie, handleSetCookie } from '@/components/hocs/cookie';
 
 interface ContatoFormInputs {
+  id: string;
   name: string;
   email: string;
   telefone: string;
@@ -24,10 +23,24 @@ export default function ContatoComponent() {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   useEffect(() => {
-    // loadContatosFromCookies();
+    loadContatosFromCookies();
+    function loadContatosFromCookies() {
+      const cookies = document.cookie.split(';');
+      const loadedContatos: ContatoFormInputs[] = cookies
+        .filter(cookie => cookie.trim().startsWith('contato_'))
+        .map(cookie => {
+          const cookieName = cookie.split('=')[0].split('_')[1];
+          const cookieValue = cookie.split('=')[1];
+          const jsonValue = JSON.parse(decodeURIComponent(cookieValue));
+          jsonValue.id = cookieName;
+          return jsonValue;
+        });
+      setContatos(loadedContatos);
+    }
   }, []);
 
   const initialValues: ContatoFormInputs = {
+    id: '',
     name: '',
     email: '',
     telefone: '',
@@ -52,9 +65,15 @@ export default function ContatoComponent() {
   });
 
   const onSubmit = (values: ContatoFormInputs) => {
-    // Simulação de envio de contato
-    alert('Mensagem enviada com sucesso! (Simulação)');
-    setContatos([...contatos, values]);
+    alert('Mensagem enviada com sucesso!');
+    axios.post('http://localhost:4000/api/contato', values).then(response => {
+        handleSetCookie(response.data.id_contato, `contato_${response.data.id_contato}`, values, 1/24);
+        values.id = response.data.id_contato;
+        setContatos([...contatos, values]);
+        alert('Contato salvo com sucesso');
+      }).catch(error => {
+        console.error('Erro ao salvar contato:', error);
+      });
   };
 
   const openEditModal = (contato: ContatoFormInputs) => {
@@ -64,9 +83,15 @@ export default function ContatoComponent() {
 
   const onEditSubmit = (values: ContatoFormInputs) => {
     if (!selectedContato) return;
-    // Simulação de atualização de contato
-    alert('Contato atualizado com sucesso! (Simulação)');
-    setContatos(contatos.map(c => (c === selectedContato ? values : c)));
+    axios.patch(`http://localhost:4000/api/contato/${selectedContato.id}`, values).then(response => {
+      alert('Contato atualizado com sucesso');
+    }).catch(error => {
+      console.error('Erro ao atualizar contato:', error);
+    });
+
+    alert('Contato atualizado com sucesso!');
+   
+    handleDeleteCookie(`contato_${selectedContato.id}`);
     setIsEditModalOpen(false);
   };
 
@@ -126,7 +151,7 @@ export default function ContatoComponent() {
           </thead>
           <tbody>
             {contatos.map((contato, index) => (
-              <tr key={index}>
+              <tr key={contato.id}>
                 <td>{contato.name}</td>
                 <td>{contato.email}</td>
                 <td>{contato.telefone}</td>

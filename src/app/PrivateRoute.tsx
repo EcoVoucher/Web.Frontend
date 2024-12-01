@@ -1,4 +1,4 @@
-import { handleGetCookie, handleSetCookie } from '@/components/hocs/cookieSession';
+import { handleGetCookie, handleSetCookie } from '@/components/hocs/cookie';
 import axios from 'axios';
 import { env } from "@/config/env";
 import { Navigate } from 'react-router-dom';

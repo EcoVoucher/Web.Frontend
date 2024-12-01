@@ -5,7 +5,7 @@ import { validaDocumento } from "@/components/hocs/validaDocumento";
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { env } from "@/config/env";
-import { handleSetCookie } from '@/components/hocs/cookieSession';
+import { handleSetCookie, handleSetCookieSession } from '@/components/hocs/cookie';
 import validaSenha from '@/components/hocs/validaSenha';
 
 export default function Login() {
@@ -33,7 +33,7 @@ export default function Login() {
             }).then((response) => {
                 setSenhaValida(true);
                 setDocumentoValido(true);
-                handleSetCookie(response.data.access_token);
+                handleSetCookieSession(response.data.access_token);
                 window.location.href = '/pegada';
             }).catch((error) => {
                 console.log(error.message);

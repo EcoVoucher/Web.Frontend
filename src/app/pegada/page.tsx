@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './style.css';
-import { AuthProvider, handleGetCookie, isAuth, useAuth } from '@/components/hocs/cookieSession';
+import { AuthProvider, handleGetCookie, isAuth, useAuth } from '@/components/hocs/cookie';
 import Layout from '../layout';
 
 const PegadaPage = () => {

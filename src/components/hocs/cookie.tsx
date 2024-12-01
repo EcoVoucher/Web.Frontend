@@ -81,9 +81,20 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 export const useAuth = () => useContext(authContext);
 
 
-export const handleSetCookie = (token: string) => {
+export const handleSetCookie = (token: string, nameCookie: string, value: object, expire: number) => {
     token = criptografar(token);
-    Cookies.set('userToken', token, {
+    Cookies.set(nameCookie, JSON.stringify(value), {
+        secure: false, // HTTPS apenas em produção
+        sameSite: 'Strict',  // Proteção contra CSRF
+        expires: expire,          // Expira em 1 'dia
+    });
+}
+
+
+export const handleSetCookieSession = (token: string, nameCookie = 'userToken') => {
+    token = criptografar(token);
+    
+    Cookies.set(nameCookie, token, {
         secure: true, // HTTPS apenas em produção
         sameSite: 'Strict',  // Proteção contra CSRF
         expires: 1,          // Expira em 1 'dia
@@ -101,9 +112,8 @@ export const handleGetCookie = () => {
     return userGet;
 };
 
-
-export const handleDeleteCookie = () => {
-    Cookies.remove('userToken', { path: '/' });
+export const handleDeleteCookie = (nameCookie: string) => {
+    Cookies.remove(nameCookie, { path: '/' });
 };
 
 
