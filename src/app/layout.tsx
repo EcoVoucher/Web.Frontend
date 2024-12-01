@@ -2,34 +2,36 @@
 
 import { ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
-import NavBar from '../components/templates/navBar/NavBar';
-import Footer from '../components/templates/footer/footer';
+import Header from '@/components/templates/header/header';
+import Footer from '@/components/templates/footer/footer';
 import './globals.css';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
 
-  // Define as rotas onde o NavBar e o Footer não serão exibidos
+  // Define as rotas onde o Header e o Footer não serão exibidos
   const excludedRoutes = ['/login', '/cadastro'];
-  const shouldShowNavBarFooter = !excludedRoutes.includes(pathname);
+  const shouldShowHeaderFooter = !excludedRoutes.includes(pathname);
 
-  // Define a classe do main de acordo com a rota
-  const mainClassName = shouldShowNavBarFooter
-    ? (pathname === '/home' ? 'home-background' : 'default-background')
-    : 'no-header-footer';
+  // Verifica se a rota é a página inicial
+  const isHomePage = pathname === '/home';
 
   return (
     <html lang="pt">
-      <body className={shouldShowNavBarFooter ? '' : 'no-header-footer'}>
-        {shouldShowNavBarFooter && (
-          <header className="header">
-            <NavBar />
-          </header>
-        )}
-        <main className={mainClassName}>
+      <body className={shouldShowHeaderFooter ? 'layout-body' : 'no-header-footer'}>
+        {shouldShowHeaderFooter && <Header />}
+        <main
+          className={
+            isHomePage
+              ? 'home-background'
+              : shouldShowHeaderFooter
+              ? 'main-content'
+              : 'no-header-footer'
+          }
+        >
           {children}
         </main>
-        {shouldShowNavBarFooter && <Footer />}
+        {shouldShowHeaderFooter && <Footer />}
       </body>
     </html>
   );

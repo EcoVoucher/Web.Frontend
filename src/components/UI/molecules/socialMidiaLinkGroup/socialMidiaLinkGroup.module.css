@@ -1,0 +1,10 @@
+/* Contêiner do grupo de links */
+.socialMediaGroup {
+    display: flex; /* Exibe os ícones em linha */
+         /* Centraliza os ícones */
+     /* Alinha verticalmente */
+     /* Espaçamento entre os ícones */
+    padding: 0px; /* Espaçamento interno no contêiner */
+    margin-right: 2%;
+  }
+  

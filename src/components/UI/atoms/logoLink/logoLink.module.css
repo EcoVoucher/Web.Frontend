@@ -1,0 +1,22 @@
+/* Estilo do contêiner do link */
+.logoLink {
+  display: flex;
+  align-items: center;
+  margin-left: 1%;
+  border-radius: 10px;
+  text-decoration: none; /* Remove sublinhado */
+  cursor: pointer;
+}
+
+/* Estilo da imagem */
+.logo {
+  width: 100%; /* Ajusta para o contêiner */
+  max-width: 150px; /* Limita a largura máxima */
+  border-radius: inherit;
+  transition: transform 0.3s ease; /* Adiciona animação para hover */
+}
+
+/* Estilo ao passar o mouse */
+.logo:hover {
+  transform: scale(1.1); /* Amplia levemente ao passar o mouse */
+}
