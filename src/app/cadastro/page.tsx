@@ -1,13 +1,15 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 import React from 'react';
 import { useState } from 'react';
 import './cadastro.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
+import { env } from "@/config/env";
 
 
 
 const Cadastro = () => {
-    const [pessoaFisica, setPessoaFisica] = useState<boolean>(true);
     const [formData, setFormData] = useState({
         tipoCliente: 'usuario',
         nome: '',
@@ -15,7 +17,7 @@ const Cadastro = () => {
         cpf: '',
         telefone: '',
         cep: '',
-        enderecoCompleto: '',
+        endereco: '',
         numero: '',
         complemento: '',
         nomeEmpresa: '',
@@ -35,7 +37,17 @@ const Cadastro = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(formData);
+        axios.post(`${env.apiBaseUrl}/user/cadastro`, formData, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then(response => {
+            alert(response.data.message);
+            window.location.href = '/login';
+        }).catch((error) => {
+            console.log(error.data)
+            alert(error.response?.data?.message || 'An error occurred');
+        });
     };
     return (
         <div className="container mt-6">
@@ -43,9 +55,9 @@ const Cadastro = () => {
                 <div className="col-md-6">
                     <div className="card rounded-0">
                         <div className="card-header text-green text-center">
-                                <a href="/home">
-                                    <img src="imagem/images/eco-novo.jpeg" alt="ecoVoucher-pagina-inicial" className="logo" width={100} height={100} />
-                                </a>
+                            <a href="/home">
+                                <img src="imagem/images/eco-novo.jpeg" alt="ecoVoucher-pagina-inicial" className="logo" width={100} height={100} />
+                            </a>
                             <h2>Faça seu cadastro</h2>
                         </div>
                         <div className="card-body">
@@ -62,7 +74,7 @@ const Cadastro = () => {
                                                 value="usuario"
                                                 checked={formData.tipoCliente === 'usuario'}
                                                 onChange={(e) => setFormData({ ...formData, tipoCliente: e.target.value })}
-                                            />{' '}
+                                            />
                                             Pessoa Física
                                         </label>
                                         <label>
@@ -73,8 +85,8 @@ const Cadastro = () => {
                                                 name="tipoCliente"
                                                 value="parceiro"
                                                 checked={formData.tipoCliente === 'parceiro'}
-                                                onChange={(e) => setFormData({ ...formData, tipoCliente: e.target.value })}                                                
-                                            />{' '}
+                                                onChange={(e) => setFormData({ ...formData, tipoCliente: e.target.value })}
+                                            />
                                             Parceiro
                                         </label>
                                     </div>
@@ -88,7 +100,8 @@ const Cadastro = () => {
                                         name="nome"
                                         value={formData.nome}
                                         onChange={handleChange}
-                                        required
+                                        required={formData.tipoCliente === 'parceiro'}
+                                        disabled={formData.tipoCliente === 'parceiro'}
                                     />
                                     <div className="error-message" id="error-nome"></div>
                                 </div>
@@ -101,7 +114,8 @@ const Cadastro = () => {
                                         name="dataNascimento"
                                         value={formData.dataNascimento}
                                         onChange={handleChange}
-                                        required
+                                        required={formData.tipoCliente === 'parceiro'}
+                                        disabled={formData.tipoCliente === 'parceiro'}
                                     />
                                 </div>
                                 <div className="form-group">
@@ -113,7 +127,8 @@ const Cadastro = () => {
                                         name="cpf"
                                         value={formData.cpf}
                                         onChange={handleChange}
-                                        required
+                                        required={formData.tipoCliente === 'parceiro'}
+                                        disabled={formData.tipoCliente === 'parceiro'}
                                     />
                                     <div className="error-message" id="error-cpf"></div>
                                 </div>
@@ -152,13 +167,13 @@ const Cadastro = () => {
                                     <div className="error-message" id="error-cep"></div>
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="enderecoCompleto">Endereço:</label>
+                                    <label htmlFor="endereco">Endereço:</label>
                                     <input
                                         type="text"
-                                        id="enderecoCompleto"
+                                        id="endereco"
                                         className="form-control"
-                                        name="enderecoCompleto"
-                                        value={formData.enderecoCompleto}
+                                        name="endereco"
+                                        value={formData.endereco}
                                         onChange={handleChange}
                                         placeholder="Rua/Av. Exemplo, 123, Bairro, Cidade, UF"
                                         required
