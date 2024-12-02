@@ -1,0 +1,21 @@
+.text-content {
+  text-align: justify;
+  font-size: 18px; /* Aumenta o tamanho da fonte */
+  line-height: 2.2; /* Aumenta o espaçamento entre linhas */
+  margin: 20px auto;
+  max-width: 900px; /* Aumenta a largura máxima */
+  padding: 20px; /* Adiciona espaçamento interno */
+  background-color: #f9f9f9; /* Adiciona um fundo claro */
+  border-radius: 8px; /* Arredonda os cantos */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve */
+}
+
+.text-content p {
+  margin-bottom: 16px; /* Adiciona espaçamento entre parágrafos */
+  color: #333; /* Define uma cor agradável e legível */
+}
+
+.text-content p:last-child {
+  margin-bottom: 0; /* Remove margem do último parágrafo */
+}
+

@@ -1,0 +1,7 @@
+iframe {
+    width: 100%;
+    height: 480px; /* Altura padrão para o vídeo */
+    border: none; /* Remove contornos */
+    border-radius: 8px; /* Bordas arredondadas opcionais */
+  }
+  

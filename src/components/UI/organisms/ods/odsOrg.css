@@ -1,0 +1,18 @@
+.header-section {
+  display: flex; /* Ativa o Flexbox para organizar os elementos lado a lado */
+  align-items: center; /* Alinha verticalmente a imagem e o título */
+  gap: 20px; /* Espaçamento entre a imagem e o título */
+  margin-bottom: 40px; /* Espaçamento entre o cabeçalho e o conteúdo abaixo */
+  padding: 0 20px;
+}
+
+.header-section img {
+  max-width: 150px; /* Define uma largura máxima para a imagem */
+  height: auto; /* Mantém a proporção da imagem */
+}
+
+.header-section h2 {
+  font-size: 1.8em; /* Aumenta um pouco o tamanho da fonte */
+  font-weight: bold; /* Deixa o título mais destacado */
+  color: #333; /* Cor escura para contraste */
+}

@@ -18,6 +18,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
   return (
     <html lang="pt">
+      
       <body className={shouldShowHeaderFooter ? 'layout-body' : 'no-header-footer'}>
         {shouldShowHeaderFooter && <Header />}
         <main
@@ -28,7 +29,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               ? 'main-content'
               : 'no-header-footer'
           }
-        >
+          >
           {children}
         </main>
         {shouldShowHeaderFooter && <Footer />}

@@ -1,0 +1,24 @@
+.botaoredondo {
+  width: 100px; /* Largura do botão */
+  height: 100px; /* Altura do botão */
+  border-radius: 50%; /* Torna o botão circular */
+  display: flex; /* Centraliza o conteúdo dentro do botão */
+  align-items: center;
+  justify-content: center;
+  background-color: #e0e0e0; /* Cor de fundo */
+  border: none; /* Remove bordas padrão */
+  cursor: pointer; /* Define o cursor */
+  margin: 10px; /* Espaçamento entre os botões */
+}
+
+.botaoredondo img {
+  width: 90%; /* Tamanho proporcional ao botão */
+  height: 90%;
+  object-fit: cover; /* Evita distorção na imagem */
+  border-radius: 50%; /* Imagem circular */
+}
+
+.botaoredondo:hover {
+  transform: scale(1.1); /* Leve aumento ao passar o mouse */
+  background-color: rgb(128, 235, 114); /* Cor ao hover */
+}

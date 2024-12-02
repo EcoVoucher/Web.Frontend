@@ -1,11 +1,9 @@
-
-
 .centralizar {
     display: flex; /* Torna o container flexível */
     align-items: center; /* Alinha os itens ao topo */
     justify-content: space-between; /* Espaça os itens igualmente */
     width: 100%; /* Faz o container ocupar toda a largura */
-    padding: 20px; /* Adiciona espaço interno */
+    padding:0px; /* Adiciona espaço interno */
     gap: 10px; /* Espaçamento entre os elementos */
 }
 
@@ -17,7 +15,6 @@
 }
 
 .esquerda {
-
     flex: 1; /* Ocupar um espaço proporcional */
     max-width: 50%; /* Limita a largura máxima */
     display: flex;
@@ -28,8 +25,7 @@
     text-align: center; /* Centraliza o texto */
 }
 
-
-h3,h2 {
+h3, h2 {
     color: #676767;
     font-size: 40px;
 }
@@ -59,41 +55,4 @@ td {
 th {
     background-color: #1ac157;
     color: white;
-}
-
-.form-group {
-    margin: 20px;
-    text-align: center;
-}
-
-select,
-input[type="number"] {
-    padding: 10px;
-    margin: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    width: 200px;
-}
-.error {
-    color: red;
-    font-size: 14px;
-    margin-top: 5px;
-  }
-  
-
-button {
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-button:hover {
-    background-color: #218838;
 }
