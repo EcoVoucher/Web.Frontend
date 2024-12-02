@@ -1,10 +1,16 @@
 "use client";
 import React, { useState } from 'react';
+import axios from 'axios';
 import './style.css';
-import Layout from '../layout';
+import { AuthProvider, handleGetCookie, isAuth } from '@/components/hocs/cookie';
+import { env } from "@/config/env";
+// import Layout from '../layout';
 
 const PegadaPage = () => {
     const [resultado, setResultado] = useState(0);
+    if(!isAuth()) {
+        return <AuthProvider><></></AuthProvider>;
+    }
 
     const calcularSoma = () => {
         let soma = 0;
@@ -27,17 +33,19 @@ const PegadaPage = () => {
         }    
     
         alert("Seu total de pontos é: " + soma + "\nPegada ecológica: " + comparativo);
-        fetch('http://localhost:4000/api/user/alterar_pegada', {
-            method: 'PATCH',
+        const token = handleGetCookie() || '';
+        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        const userId = decodedToken.user.id;
+
+        axios.patch(`${env.apiBaseUrl}/user/alterar_pegada`, {
+            token: userId,
+            soma_pegada: soma
+        }, {
             headers: {
-                'Content-Type': 'application/json',
-                'access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjcyOTYwYjVlNzE2ZmUxYzVjYTIyM2Q2In0sImlhdCI6MTczMDc2NzgxNCwiZXhwIjoxNzMwNzc3ODE0fQ.Gs8tlbl5YHb0LSpbv-0DJkKq5dfiHnjP3q6i020pajw',
-            },
-            body: JSON.stringify({
-                token: '672960b5e716fe1c5ca223d6',
-                soma_pegada: soma
-            })
-        }).then((response) => response.json()).then(() => {
+            'Content-Type': 'application/json',
+            'access-token': token,
+            }
+        }).then(() => {
             alert("Pegada ecológica atualizada com sucesso!");
         }).catch(() => {
             alert('Erro ao atualizar pegada ecológica:');
@@ -48,7 +56,7 @@ const PegadaPage = () => {
     };
 
     return (
-            <div>
+        <div>
             <div className="container">
                 <h3>Pegada Ecológica: O que é isso?</h3>
                 <hr />
@@ -246,6 +254,7 @@ const PegadaPage = () => {
             </div>
             </div>
         </div>
+
     );
 };
 
