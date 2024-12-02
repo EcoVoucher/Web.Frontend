@@ -43,7 +43,7 @@ export function isAuth(): boolean {
 
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-    const [token, setToken] = useState<string | null>(handleGetCookie());
+    const [token] = useState<string | null>(handleGetCookie());
 
     useEffect(() => {
         
