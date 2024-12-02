@@ -1,6 +1,6 @@
 import React from 'react';
 import Subtitle from '../../atoms/tipography/subtitle';
-import './SubtitleSection.css';
+import './subTitleSection.css';
 
 const SubtitleSection: React.FC = () => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import Title from '../.././atoms/tipography/title';
-import './TitleSection.css';
+import './titleSection.css';
 
 const TitleSection: React.FC = () => {
   return (

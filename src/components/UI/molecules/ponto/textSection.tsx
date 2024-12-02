@@ -1,6 +1,6 @@
 import React from 'react';
 import Subtitle from '../../atoms/tipography/subtitle';
-import './TextSection.css';
+import './textSection.css';
 
 interface TextSectionProps {
   text: string;

@@ -1,5 +1,5 @@
 import React from 'react';
-import './VideoSection.css';
+import './videoSection.css';
 
 const VideoSection: React.FC = () => {
   return (
