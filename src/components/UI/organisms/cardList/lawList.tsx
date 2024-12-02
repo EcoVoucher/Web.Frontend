@@ -15,10 +15,10 @@ interface LawsListProps {
 
 const LawsList: React.FC<LawsListProps> = ({ leis }) => (
   <>
-    <p>
+    <h5>
       As leis ambientais no Brasil foram criadas com a intenção de proteger o meio ambiente e reduzir as consequências de ações devastadoras.
-    </p>
-    <div className="container">
+    </h5>
+    <div className="container3">
       {leis.map((lei, index) => (
         <LawCard
           key={index}

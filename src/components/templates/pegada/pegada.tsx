@@ -80,7 +80,7 @@ const PegadaTemplate: React.FC<PegadaTemplateProps> = ({ children }) => {
 
             <div className='bot'>
                 <div className='botao'>
-                    <button onClick={calcularSoma}>Verificar minha pegada</button>
+                    <button onClick={calcularSoma}>Verifique a sua pegada</button>
                 </div>
 
                 <div className='soma'>

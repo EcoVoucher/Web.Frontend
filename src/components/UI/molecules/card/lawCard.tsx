@@ -13,7 +13,7 @@ interface LawCardProps {
 const LawCard: React.FC<LawCardProps> = ({ imgSrc, titulo, descricao, link }) => (
   <div className="box">
     <ImageComponent src={imgSrc} alt={titulo} width={150} height={150} />
-    <h1>{titulo}</h1>
+    <p>{titulo}</p>
     <p>{descricao}</p>
     <Button link={link} text="CONSULTE AQUI" />
   </div>

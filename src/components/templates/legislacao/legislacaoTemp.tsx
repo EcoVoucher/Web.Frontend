@@ -46,8 +46,8 @@ const LegislacaoAmbientalTemplate: React.FC = () => {
   return (
     <div>
       <div className="titulo">
-        <Title text="Legislação Ambiental Vigente" />
-      </div>
+        <h2>Legislação Ambiental Vigente</h2>
+      </div>  
       <LawsList leis={leis} />
     </div>
   );

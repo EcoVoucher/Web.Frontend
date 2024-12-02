@@ -2,6 +2,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+  }
+  
+  .titleWrapper {
+   text-align: center; /* Exemplos adicionais de estilo */
     padding: 20px;
+    font: 1.6em 'Roboto', sans-serif;
   }
   

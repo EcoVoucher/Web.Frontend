@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { validaDocumento } from "@/components/hocs/validaDocumento";
 import './style.css';
-import 'bootstrap/dist/css/bootstrap.min.css?version=5.3.3';
+import 'bootstrap/dist/css/bootstrap.min.css?version=^5.3.3';
 
 export default function Login() {
     const [documento, setDocumento] = useState<string>('');
@@ -15,7 +15,7 @@ export default function Login() {
     
     return (
         <div>
-            <div className="container2">
+            <div className="container10">
                 <div className="row justify-content-center">
                     <div className="col-md-6 text-center">
                             <a href="/home">
@@ -24,7 +24,7 @@ export default function Login() {
                     </div>
                 </div>
             </div>
-            <div className="container mt-5">
+            <div className="container12 mt-5">
                 <div className="row justify-content-center">
                     <div className="col-md-6">
                         <div className="card rounded-0">
