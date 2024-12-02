@@ -1,9 +1,8 @@
-import Pontuacao from '../../components/templates/pontuacao/pontuacao';
+
 'use client';
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import './style.css';
 import { AuthProvider, isAuth } from '@/components/hocs/cookie';
 
 interface Material {
@@ -11,7 +10,7 @@ interface Material {
   pontos: number;
 }
 
-const Pontuacao: React.FC = () => {
+const PontuacaoPage: React.FC = () => {
   if(!isAuth()) {
     return <AuthProvider><></></AuthProvider>;
   }
@@ -46,11 +45,12 @@ const Pontuacao: React.FC = () => {
       }
     },
   });
+}
 
 const HomePage: React.FC = () => {
   return (
     <div>
-      <Pontuacao />
+      <PontuacaoPage />
     </div>
   );
 };
