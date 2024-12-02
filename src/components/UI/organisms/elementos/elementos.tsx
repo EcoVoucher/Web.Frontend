@@ -7,7 +7,7 @@ import styles from './elementos.module.css';
 interface NavigationLinkData {
   href: string;
   label: string;
-  icon: any; // Ajuste o tipo de acordo com a sua biblioteca de ícones
+  icon: React.ReactNode;
 }
 
 interface NavBarOrganismProps {
