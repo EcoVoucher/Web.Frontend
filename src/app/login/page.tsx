@@ -1,11 +1,11 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { validaDocumento } from "@/components/hocs/validaDocumento";
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { env } from "@/config/env";
-import { handleSetCookie, handleSetCookieSession } from '@/components/hocs/cookie';
+import { handleSetCookieSession } from '@/components/hocs/cookie';
 import validaSenha from '@/components/hocs/validaSenha';
 
 export default function Login() {
@@ -18,15 +18,17 @@ export default function Login() {
     useEffect(() => {
     }, [documento, senha])
 
-    const handleSubmit = async(event: any) => {
+    const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         
-        setDocumentoValido(validaDocumento(documento));
-        setSenhaValida(validaSenha(senha));
+        const isDocumentoValido = validaDocumento(documento);
+        const isSenhaValida = validaSenha(senha);
 
+        setDocumentoValido(isDocumentoValido);
+        setSenhaValida(isSenhaValida);
 
-        console.log(documentoValido);
-        if (documentoValido && SenhaValida) {            
+        console.log(isDocumentoValido);
+        if (isDocumentoValido && isSenhaValida) {            
             const response = axios.post(`${apiUrl}/login`, {
                 identidade: documento,
                 senha: senha,
@@ -48,7 +50,7 @@ export default function Login() {
 
     return (
         <div>
-            <div className="container2">
+            <div className="container2" id='teste'>
                 <div className="row justify-content-center">
                     <div className="col-md-6 text-center">
                             <a href="/home">

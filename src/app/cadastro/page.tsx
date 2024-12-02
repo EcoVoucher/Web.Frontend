@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 import React from 'react';
 import { useState } from 'react';
@@ -5,12 +6,10 @@ import './cadastro.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { env } from "@/config/env";
-import { ErrorMessage } from 'formik';
 
 
 
 const Cadastro = () => {
-    const [pessoaFisica, setPessoaFisica] = useState<boolean>(true);
     const [formData, setFormData] = useState({
         tipoCliente: 'usuario',
         nome: '',

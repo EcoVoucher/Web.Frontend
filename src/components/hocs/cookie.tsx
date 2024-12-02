@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
             }).then(response => {
                 console.log('Token validation response', response);
             }).catch(error => {
-                handleDeleteCookie();
+                handleDeleteCookie('userToken');
                 console.error('Error during token validation', error);
                 window.location.href = '/login';
             });
