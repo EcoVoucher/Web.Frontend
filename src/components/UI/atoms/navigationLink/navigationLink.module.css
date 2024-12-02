@@ -1,0 +1,14 @@
+.navigationLink {
+  text-decoration: none;
+  font-family: 'Roboto', Arial, sans-serif;
+  color: rgb(88, 87, 87);
+  font-size: large;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  margin: 0 20px; /* Espaçamento entre links */
+}
+
+.navigationLink:hover {
+  color: rgb(23, 131, 11);
+}

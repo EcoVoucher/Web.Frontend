@@ -1,0 +1,66 @@
+/* navBarOrganism.module.css */
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:0px;
+  width: 100%;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Separação visual */
+}
+
+.navigationLinksGroup {
+  width: 20%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px; /* Espaçamento entre os links */
+  font-size: 16px;
+}
+
+.socialMediaGroup {
+  display: flex;
+  gap: 2px; /* Espaçamento entre os ícones */
+  align-items: center;
+  margin-left: 20%;
+}
+/* Responsividade para telas médias (tablets, <= 768px) */
+@media (max-width: 768px) {
+  .navBar {
+    flex-direction: column; /* Empilha os elementos verticalmente */
+    align-items: center;
+  }
+
+  .logoGroup {
+    justify-content: center; /* Centraliza o logo */
+    margin-bottom: 10px; /* Adiciona espaçamento abaixo do logo */
+  }
+
+  .navigationLinksGroup {
+    justify-content: center; /* Centraliza os links */
+    gap: 10px; /* Reduz o espaçamento entre links */
+    font-size: 14px; /* Reduz o tamanho da fonte */
+    margin-bottom: 10px; /* Espaçamento entre os grupos */
+  }
+
+  .socialMediaGroup {
+    justify-content: center; /* Centraliza os ícones sociais */
+  }
+}
+
+/* Responsividade para telas pequenas (smartphones, <= 480px) */
+@media (max-width: 480px) {
+  .navigationLinksGroup {
+    flex-direction: column; /* Empilha os links em uma coluna */
+    align-items: center; /* Centraliza os links */
+    gap: 8px; /* Reduz ainda mais o espaçamento */
+    font-size: 12px; /* Reduz o tamanho da fonte */
+  }
+
+  .socialMediaGroup {
+    gap: 5px; /* Reduz o espaçamento entre ícones */
+  }
+
+  .navBar {
+    padding: 10px; /* Reduz o padding para economizar espaço */
+  }
+}

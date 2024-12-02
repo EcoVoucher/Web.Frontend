@@ -1,0 +1,35 @@
+
+.logo {
+  max-width: 35%;
+  height: auto;
+  border-radius: 30%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.container2 {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  background-color: #83cc7a;
+  border-radius: 10px;
+  padding: 40px;
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.forgot-password,
+.signup {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

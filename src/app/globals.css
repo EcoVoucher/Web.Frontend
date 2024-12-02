@@ -1,21 +1,38 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Quando Header e Footer são exibidos */
+.layout-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+ /* Ajuste para compensar a altura do Footer */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.main-content {
+  flex: 1;
+  padding:0px;
+  background-image: linear-gradient(to bottom, #a8ee88, white);
+}
+.home-background {
+  flex: 1;
+  padding: 20px;
+  background-image: url('https://i.imgur.com/KeP4alT.jpeg'); /* Substitua pelo caminho da sua imagem */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* Quando Header e Footer não são exibidos */
+.no-header-footer {
+  display: flex;
+  align-items: center; /* Alinha verticalmente ao centro */
+  justify-content: center; /* Alinha horizontalmente ao centro */
+  min-height: 100vh;
+  background-image: linear-gradient(to bottom, #a8ee88, white) /* Garante que ocupe a altura total da tela *//* Espaço ao redor do conteúdo */
+ 
+}
+
+/* Estilos adicionais para ajustar formulários ou conteúdo dentro do Main */
+.no-header-footer main {
+  width: 100%;
+  border-radius: 8px;
+  padding: 40px;
 }
