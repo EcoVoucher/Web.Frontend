@@ -84,7 +84,7 @@ export default function ContatoComponent() {
 
   const onEditSubmit = (values: ContatoFormInputs) => {
     if (!selectedContato) return;
-    axios.patch(`${env.apiBaseUrl}/contato/${selectedContato.id}`, values).then(response => {
+    axios.patch(`${env.apiBaseUrl}/contato/${selectedContato.id}`, values).then(() => {
       alert('Contato atualizado com sucesso');
     }).catch(error => {
       console.error('Erro ao atualizar contato:', error);
@@ -151,7 +151,7 @@ export default function ContatoComponent() {
             </tr>
           </thead>
           <tbody>
-            {contatos.map((contato, index) => (
+            {contatos.map((contato) => (
               <tr key={contato.id}>
                 <td>{contato.name}</td>
                 <td>{contato.email}</td>

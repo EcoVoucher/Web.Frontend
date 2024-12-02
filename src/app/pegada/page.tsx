@@ -1,16 +1,16 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './style.css';
-import { AuthProvider, handleGetCookie, isAuth, useAuth } from '@/components/hocs/cookie';
+import { AuthProvider, handleGetCookie, isAuth } from '@/components/hocs/cookie';
 import { env } from "@/config/env";
-import Layout from '../layout';
+// import Layout from '../layout';
 
 const PegadaPage = () => {
+    const [resultado, setResultado] = useState(0);
     if(!isAuth()) {
         return <AuthProvider><></></AuthProvider>;
     }
-    const [resultado, setResultado] = useState(0);
 
     const calcularSoma = () => {
         let soma = 0;
