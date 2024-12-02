@@ -1,6 +1,6 @@
 import React from 'react';
 import './legislacaoTemp.css';
-import Title from '../../UI/atoms/tipography/title';
+// import Title from '../../UI/atoms/tipography/title';
 import LawsList from '../../UI/organisms/cardList/lawList';
 
 const LegislacaoAmbientalTemplate: React.FC = () => {

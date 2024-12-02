@@ -1,7 +1,7 @@
 import React from 'react';
 import ImageSection from '../../molecules/ponto/imageSection/imageSection';
 import TextSection from '../../molecules/ponto/textSection';
-import './ContentSection.css';
+import './contentSection.css';
 
 const ContentSection: React.FC = () => {
   return (

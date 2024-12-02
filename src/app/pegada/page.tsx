@@ -8,11 +8,13 @@ import { env } from "@/config/env";
 
 const PegadaPage: React.FC = () => {
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [resultado, setResultado] = useState(0);
     if(!isAuth()) {
         return <AuthProvider><></></AuthProvider>;
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const calcularSoma = () => {
         let soma = 0;
         const selects = document.querySelectorAll('select');
