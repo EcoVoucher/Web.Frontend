@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import Header from '@/components/templates/header/header';
 import Footer from '@/components/templates/footer/footer';
 import './globals.css';
+import 'bootstrap/dist/css/bootstrap.min.css?version=5.3.3';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();

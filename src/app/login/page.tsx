@@ -2,8 +2,7 @@
 import { useEffect, useState } from 'react';
 import { validaDocumento } from "@/components/hocs/validaDocumento";
 import './style.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import 'bootstrap/dist/css/bootstrap.min.css?version=5.3.3';
 
 export default function Login() {
     const [documento, setDocumento] = useState<string>('');
