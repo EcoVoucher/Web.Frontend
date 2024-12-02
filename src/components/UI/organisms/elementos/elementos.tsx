@@ -7,7 +7,8 @@ import styles from './elementos.module.css';
 interface NavigationLinkData {
   href: string;
   label: string;
-  icon: React.ReactNode;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  icon: any; 
 }
 
 interface NavBarOrganismProps {
