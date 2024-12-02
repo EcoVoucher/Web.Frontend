@@ -1,0 +1,26 @@
+.questionario {
+    margin: 20px 0;
+  }
+  
+  .questionario h2 {
+    margin-bottom: 20px;
+  }
+  
+  .perguntas {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .perguntas label {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+  }
+  
+  .perguntas select {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  

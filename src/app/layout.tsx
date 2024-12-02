@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import Header from '@/components/templates/header/header';
 import Footer from '@/components/templates/footer/footer';
 import './globals.css';
+import 'bootstrap/dist/css/bootstrap.min.css?version=5.3.3';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
   return (
     <html lang="pt">
+      
       <body className={shouldShowHeaderFooter ? 'layout-body' : 'no-header-footer'}>
         {shouldShowHeaderFooter && <Header />}
         <main
@@ -28,7 +30,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               ? 'main-content'
               : 'no-header-footer'
           }
-        >
+          >
           {children}
         </main>
         {shouldShowHeaderFooter && <Footer />}

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { validaDocumento } from "@/components/hocs/validaDocumento";
 import './style.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css?version=5.3.3';
 import { env } from "@/config/env";
 import { handleSetCookieSession } from '@/components/hocs/cookie';
 import validaSenha from '@/components/hocs/validaSenha';
@@ -50,7 +50,7 @@ export default function Login() {
 
     return (
         <div>
-            <div className="container2" id='teste'>
+            <div className="container10" id = "teste">
                 <div className="row justify-content-center">
                     <div className="col-md-6 text-center">
                             <a href="/home">
@@ -59,7 +59,7 @@ export default function Login() {
                     </div>
                 </div>
             </div>
-            <div className="container mt-5">
+            <div className="container12 mt-5">
                 <div className="row justify-content-center">
                     <div className="col-md-6">
                         <div className="card rounded-0">

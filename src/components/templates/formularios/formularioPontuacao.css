@@ -1,0 +1,38 @@
+.form-group {
+    margin: 20px;
+    text-align: center;
+}
+
+select,
+input[type="number"] {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 200px;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+button {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px 25px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    margin-top: 10px;
+    
+}
+
+button:hover {
+    background-color: #218838;
+}

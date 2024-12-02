@@ -1,0 +1,25 @@
+.page-content {
+  max-width: 90%; /* Use 90% da largura da tela */
+  margin: 0 auto; /* Centralize horizontalmente */
+  padding: 20px; /* Adicione espaçamento interno */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Aumente o espaçamento entre os itens */
+}
+
+  
+  /* Ajustes para telas menores */
+  @media (max-width: 768px) {
+    .page-content {
+      padding: 10px;
+    }
+  
+    .subtitle-section {
+      padding: 0 10px;
+    }
+  
+    .video-section iframe {
+      height: 240px; /* Altura reduzida para dispositivos móveis */
+    }
+  }
+  

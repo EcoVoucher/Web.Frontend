@@ -1,0 +1,41 @@
+.ods-list {
+  margin-top: 20px;
+  padding: 0;
+  list-style-type: none;
+  background-color: #f9f9f9; /* Adiciona um fundo claro */
+  border-radius: 8px; /* Arredonda os cantos */
+  padding: 20px; /* Adiciona espaçamento interno */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve */
+}
+
+.ods-list li {
+  margin-bottom: 16px; /* Espaçamento maior entre os itens */
+  padding: 10px; /* Espaçamento interno */
+  background-color: #ffffff; /* Fundo branco para os itens */
+  border: 1px solid #ddd; /* Adiciona uma borda leve */
+  border-radius: 6px; /* Arredonda os cantos dos itens */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Animação para hover */
+}
+
+.ods-list li:hover {
+  background-color: #f1f1f1; /* Fundo diferente ao passar o mouse */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ao passar o mouse */
+}
+
+.ods-list strong {
+  color: #333; /* Cor para o título */
+  font-weight: bold; /* Destaca o título */
+  margin-right: 8px; /* Espaço entre o título e a descrição */
+}
+
+.ods-list a {
+  color: #007bff; /* Cor azul para os links */
+  text-decoration: none; /* Remove o sublinhado */
+  font-weight: bold; /* Destaca o link */
+  transition: color 0.3s ease; /* Animação para hover */
+}
+
+.ods-list a:hover {
+  text-decoration: underline; /* Adiciona sublinhado no hover */
+  color: #0056b3; /* Escurece o azul no hover */
+}
