@@ -1,0 +1,12 @@
+.header-section {
+  align-items: center; /* Alinha verticalmente a imagem e o título */
+  gap: 20px; /* Espaçamento entre a imagem e o título */
+  padding: 0 px;
+}
+
+.header-section img {
+  max-width: 150px; /* Define uma largura máxima para a imagem */
+  height: auto; /* Mantém a proporção da imagem */
+}
+
+

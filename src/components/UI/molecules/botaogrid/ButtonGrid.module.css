@@ -1,0 +1,18 @@
+.principal {
+  display: flex; /* Ativa o layout flexível */
+  flex-direction: row; /* Alinha os botões horizontalmente */
+  flex-wrap: wrap; /* Permite quebra de linha, se necessário */
+  justify-content:left ;/* Centraliza os botões no eixo horizontal */
+  align-items: center; /* Centraliza os botões no eixo vertical */
+  gap: 100px; /* Espaçamento uniforme entre os botões */
+  padding: 20px; /* Espaçamento interno */
+  margin-top: 10px;
+
+}
+
+@media (max-width: 1200px) {
+  .principal {
+    justify-content: center; /* Garante centralização em telas menores */
+    gap: 10px; /* Reduz o espaçamento para telas menores */
+  }
+}

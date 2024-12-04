@@ -7,7 +7,8 @@ import styles from './elementos.module.css';
 interface NavigationLinkData {
   href: string;
   label: string;
-  icon: any; // Ajuste o tipo de acordo com a sua biblioteca de ícones
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  icon: any; 
 }
 
 interface NavBarOrganismProps {

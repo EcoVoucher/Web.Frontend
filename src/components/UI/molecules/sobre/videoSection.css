@@ -1,0 +1,10 @@
+.video-section {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  padding: 20px; /* Adiciona espaçamento interno */
+  margin: 0 auto; /* Centraliza o container */
+  background: transparent; /* Mantém o fundo transparente */
+  width: 100%; /* Ocupe toda a largura disponível */
+  max-width: 1200px; /* Defina uma largura máxima */
+}
