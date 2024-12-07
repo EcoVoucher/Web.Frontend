@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import Hotjar from '@hotjar/browser';
 import NavBarOrganism from '../../UI/organisms/elementos/elementos';
 import { faHome, faEnvelope, faUser, faGavel } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,7 +11,12 @@ const navigationLinks = [
 ];
 
 
+
+
 const Header: React.FC = () => {
+  useEffect(() => {
+    Hotjar.init(5234044, 6);
+  }, []);
   return (
     <header>
       <NavBarOrganism navigationLinks={navigationLinks} />
