@@ -1,5 +1,4 @@
 import React from 'react';
-import LinkedImage from '../../molecules/ods/linkimage';
 import TextContent from '../../molecules/ods/odsMol';
 import ODSList from '../../molecules/ods/listOds';
 import './odsOrg.css';
@@ -22,9 +21,6 @@ const ContentSection: React.FC = () => {
 
   return (
     <>
-      <div className="header-section">
-        <LinkedImage href="https://brasil.un.org/pt-br/sdgs" src="/imagem/imagemHOME/ods_logo.png" alt="Objetivos do Desenvolvimento Sustentável" />
-      </div>
       <div className="content-section">
         <TextContent title="O que são ODS?" paragraphs={paragraphs} />
         <ODSList items={odsItems} />
