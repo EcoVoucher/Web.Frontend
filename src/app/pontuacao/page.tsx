@@ -5,6 +5,7 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { AuthProvider, isAuth } from '@/components/hocs/cookie';
+import Pontuacao from '@/components/templates/pontuacao/pontuacao';
 
 interface Material {
   nome: string;
@@ -51,7 +52,7 @@ const PontuacaoPage: React.FC = () => {
 const HomePage: React.FC = () => {
   return (
     <div>
-      <PontuacaoPage />
+      <Pontuacao />
     </div>
   );
 };
